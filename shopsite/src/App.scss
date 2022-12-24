@@ -1,0 +1,73 @@
+$primary-color: #dac3b3;
+$secondary-color: #F8EDE3;
+$emphasize-color: #85586F;
+$font-color: #3D3D3D;
+$grey-color: #D8D9CF;
+
+@font-face {
+  font-family: 'Noto';
+  src: url('./fonts/Noto_Sans/NotoSans-Medium.ttf');
+}
+@font-face {
+  font-family: 'Roboto_R';
+  src: url('./fonts/ROTOBO/Roboto-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('./fonts/ROTOBO/Roboto-Light.ttf');
+}
+
+.App {
+  color: $font-color;
+  font-family: 'Noto';
+
+  button {}
+}
+
+h1 {
+  font-family: 'Roboto';
+  font-size: 22px;
+}
+
+header {
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  height: 50px;
+  background-color: $primary-color;
+
+  .header_content {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    justify-content: space-between;
+    .left_container {
+      display: flex;
+
+      img {
+        padding: 5px;
+        width: 40px;
+        height: 40px;
+      }
+
+      h1 {
+        line-height: 50px;
+        color: $emphasize-color;
+        margin-left: 1rem;
+      }
+    }
+
+    .right_container {
+      display: flex;
+      width: 30%;
+      height: 100%;
+      line-height: 50px;
+      justify-content: space-evenly;
+      font-size: 1.2rem;
+      color: $emphasize-color;
+
+      li {}
+    }
+  }
+}
