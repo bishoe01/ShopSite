@@ -30,44 +30,44 @@ h1 {
   font-size: 22px;
 }
 
-header {
-  display: flex;
-  width: 100%;
-  margin: 0 auto;
-  height: 50px;
-  background-color: $primary-color;
+// header {
+//   display: flex;
+//   width: 100%;
+//   margin: 0 auto;
+//   height: 50px;
+//   background-color: $primary-color;
 
-  .header_content {
-    display: flex;
-    width: 80%;
-    margin: 0 auto;
-    justify-content: space-between;
-    .left_container {
-      display: flex;
+//   .header_content {
+//     display: flex;
+//     width: 80%;
+//     margin: 0 auto;
+//     justify-content: space-between;
+//     .left_container {
+//       display: flex;
 
-      img {
-        padding: 5px;
-        width: 40px;
-        height: 40px;
-      }
+//       img {
+//         padding: 5px;
+//         width: 40px;
+//         height: 40px;
+//       }
 
-      h1 {
-        line-height: 50px;
-        color: $emphasize-color;
-        margin-left: 1rem;
-      }
-    }
+//       h1 {
+//         line-height: 50px;
+//         color: $emphasize-color;
+//         margin-left: 1rem;
+//       }
+//     }
 
-    .right_container {
-      display: flex;
-      width: 30%;
-      height: 100%;
-      line-height: 50px;
-      justify-content: space-evenly;
-      font-size: 1.2rem;
-      color: $emphasize-color;
+//     .right_container {
+//       display: flex;
+//       width: 30%;
+//       height: 100%;
+//       line-height: 50px;
+//       justify-content: space-evenly;
+//       font-size: 1.2rem;
+//       color: $emphasize-color;
 
-      li {}
-    }
-  }
-}
+//       li {}
+//     }
+//   }
+// }
