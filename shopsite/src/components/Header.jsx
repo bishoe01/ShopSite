@@ -6,6 +6,7 @@ import {AiOutlineShopping} from 'react-icons/ai';
 import {HiOutlinePencilAlt} from 'react-icons/hi';
 import { login, logout, onUserStateChanged } from '../api/firebase';
 import User from './User';
+import Button from './ui/Button';
 function Header(props) {
     const navigate = useNavigate();
     const [user, setUser] = useState();
@@ -28,9 +29,9 @@ function Header(props) {
                     {user && 
                     <div className='flex gap-4'>
                     <User user={user} />
-                    <button onClick={logout}>Logout</button>
+                    <Button text={'Logout'} onClick={logout}/>
                     </div>}
-                    {!user && <button onClick={login}>Login</button>}
+                    {!user && <Button text={'Login'} onClick={login}/>}
                 </nav>
         </header>
     );
