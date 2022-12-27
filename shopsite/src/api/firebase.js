@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "firebase/auth";
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -12,16 +12,19 @@ const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
 export function login() {
-    signInWithPopup(auth, provider).then((result) => {
-        const user = result.user;
-        console.log(user);
-        // ...
-    }).catch((error) => {
+    return signInWithPopup(auth, provider).catch((error) => {
         console.log(error);
-        // const errorCode = error.code;
-        // const errorMessage = error.message;
-        // const email = error.customData.email;
-        
     });
+}
 
+export function logout() {
+    signOut(auth).catch((error) => {
+        console.log(error);
+    })
+}
+
+export function onUserStateChanged(callback) {
+    onAuthStateChanged(auth, (user) => {
+        callback(user);
+    });
 }
