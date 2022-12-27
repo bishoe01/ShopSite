@@ -2,9 +2,9 @@ import React from 'react';
 
 function NewProducts(props) {
     return (
-        <div>
-            NewProducts
-        </div>
+        <form action="text">
+            <input type="text" />
+        </form>
     );
 }
 

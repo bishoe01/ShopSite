@@ -1,21 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import '../App.scss';
 import { FiLogIn } from 'react-icons/fi';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {AiOutlineShopping} from 'react-icons/ai';
 import {HiOutlinePencilAlt} from 'react-icons/hi';
 import { login, logout, onUserStateChanged } from '../api/firebase';
 import User from './User';
 import Button from './ui/Button';
+import { useAuthContext } from './context/AuthContext';
 function Header(props) {
-    const navigate = useNavigate();
-    const [user, setUser] = useState();
-    useEffect(() => {
-        onUserStateChanged((user) => {
-            setUser(user);
-        })
-        
-    }, []);
+    const {user,login,logout} = useAuthContext();
     return (
         <header className='flex justify-between border-b border-gray-300 p-2'>
                     <Link to={'/'} className="flex items-center text-4xl text-brand">
@@ -24,7 +18,7 @@ function Header(props) {
                         </Link>
                 <nav className='flex items-center gap-4 font-semibold'>
                     <Link to={'/products'}>Products</Link>
-                    <Link to={'/carts'}>Carts</Link>
+                    {user && <Link to={'/carts'}>Carts</Link>}
                     {user && user.isAdmin && <Link to={'products/new'}><HiOutlinePencilAlt className='text-3xl' /></Link>}
                     {user && 
                     <div className='flex gap-4'>
