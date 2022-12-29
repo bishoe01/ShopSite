@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React  from 'react';
 import '../App.scss';
-import { FiLogIn } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import {AiOutlineShopping} from 'react-icons/ai';
 import {HiOutlinePencilAlt} from 'react-icons/hi';
-import { login, logout, onUserStateChanged } from '../api/firebase';
 import User from './User';
 import Button from './ui/Button';
 import { useAuthContext } from './context/AuthContext';

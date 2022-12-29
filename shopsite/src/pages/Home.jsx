@@ -1,9 +1,10 @@
 import React from 'react';
+import Products from './Products';
 
 function Home(props) {
     return (
         <div>
-            Home
+            <Products/>
         </div>
     );
 }

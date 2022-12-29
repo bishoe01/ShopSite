@@ -1,16 +1,18 @@
-import logo from './logo.svg';
 import './App.scss';
-import { Route, Routes, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import Header from './components/Header';
 import { AuthContextProvider } from './components/context/AuthContext';
-
+import {QueryClientProvider, QueryClient} from '@tanstack/react-query';
 function App() {
+  const queryClient = new QueryClient();
   return (
     <div className="App">
-      <AuthContextProvider>
-      <Header/>
-      <Outlet/>
-      </AuthContextProvider>
+      <QueryClientProvider client={queryClient}>
+        <AuthContextProvider>
+          <Header />
+          <Outlet />
+        </AuthContextProvider>
+      </QueryClientProvider>
     </div>
   );
 }
