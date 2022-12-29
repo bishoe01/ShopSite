@@ -49,7 +49,7 @@ async function adminUser(user) {
         );
 }
 
-export async function getProducts(callback) {
+export async function getProducts() {
     return get(ref(database, 'products'))
         .then((snapshot) => {
             if (snapshot.exists()) {
