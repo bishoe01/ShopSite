@@ -5,7 +5,9 @@ import {AiOutlineShopping} from 'react-icons/ai';
 import {HiOutlinePencilAlt} from 'react-icons/hi';
 import User from './User';
 import Button from './ui/Button';
+import {useQuery} from '@tanstack/react-query';
 import { useAuthContext } from './context/AuthContext';
+import CartBadge from './CartBadge';
 function Header(props) {
     const {user,login,logout} = useAuthContext();
     return (
@@ -16,7 +18,7 @@ function Header(props) {
                         </Link>
                 <nav className='flex items-center gap-4 font-semibold'>
                     <Link to={'/products'}>Products</Link>
-                    {user && <Link to={'/carts'}>Carts</Link>}
+                    {user && <Link to={'/carts'} className='flex relative'><CartBadge /></Link>}
                     {user && user.isAdmin && <Link to={'products/new'}><HiOutlinePencilAlt className='text-3xl' /></Link>}
                     {user && 
                     <div className='flex gap-4'>

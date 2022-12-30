@@ -9,8 +9,8 @@ import Products from './pages/Products';
 import NewProducts from './pages/NewProducts';
 import Home from './pages/Home';
 import ProductsDetail from './pages/ProductsDetail';
-import MyCart from './pages/MyCart';
 import ProtectedRoute from './pages/ProtectedRoute';
+import Carts from './pages/Carts';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const router = createBrowserRouter([
   {
@@ -32,7 +32,7 @@ const router = createBrowserRouter([
         path: '/carts',
         element:
           <ProtectedRoute>
-            <MyCart />
+            <Carts/>
           </ProtectedRoute>
       }
     ]

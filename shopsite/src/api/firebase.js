@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "firebase/auth";
-import { getDatabase, ref, get, set } from "firebase/database";
+import { getDatabase, remove,ref, get, set } from "firebase/database";
 import { v4 as uuid } from 'uuid';
 
 const firebaseConfig = {
@@ -63,7 +63,19 @@ export async function getProducts() {
 }
 
 
-
+export async function getCart(userId) {
+    return get(ref(database, `cart/${userId}`))
+    .then((snapshot) => {
+        if (snapshot.exists()) {
+            console.log(snapshot.val());
+            return Object.values(snapshot.val()); //KEY제외하고 VALUES만 가져옴
+        }
+        return [];
+    }
+    ).catch((error) => {
+        console.error(error);
+    });
+}
 
 export async function EnrollItem(product, imageURL) {
     const id = uuid();
@@ -74,4 +86,12 @@ export async function EnrollItem(product, imageURL) {
         image: imageURL,
         option: product.option.split(','),
     })
+}
+
+export async function UpdateCart(userId,product){
+    return set(ref(database, `cart/${userId}/${product.id}`), product); 
+}
+
+export async function removeFromCart(userId,productId){
+    return remove(ref(database, `cart/${userId}/${productId}`))
 }
