@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { getProducts } from '../api/firebase';
-import { useQuery } from '@tanstack/react-query';
 import ProductsCard from '../components/ProductsCard';
+import useProducts from '../hooks/useProducts';
 function Products(props) {
-    const { isLoading, data: products, error } = useQuery(['products'], getProducts);
+    const {ProductsQuery : {isLoading, error, data: products}} = useProducts();
     return (
         <div>
             {isLoading && <p>Loading...</p>}

@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
-import { EnrollItem } from '../api/firebase';
+import { EnrollItem, UpdateCart } from '../api/firebase';
 import { uploadImage } from '../api/uploader';
 import '../App.scss';
 import Button from '../components/ui/Button';
 import { Navigate } from 'react-router-dom';
+import useProducts from '../hooks/useProducts';
 function NewProducts(props) {
     const [product, setProduct] = useState({});
     const [file, setFile] = useState();
     const [isUploading, setIsUploading] = useState(false);
     const [success, setSuccess] = useState();
+    
+    const {addProduct} = useProducts();
+
     const handleChange = (e) => {
         const { name, value, files } = e.target;
         if (name === 'file') { //input의 종류가 name이었음, 그것이 file일때
@@ -25,15 +29,14 @@ function NewProducts(props) {
         //Firebase에 제품 정보 저장하기
         uploadImage(file)
             .then((url) => {
-                console.log(url);
-                EnrollItem(product, url)
-                    .then(() => {
-                        setSuccess('제품이 등록되었습니다.');
-                        setTimeout(() => {
-                            setSuccess();
-                        }, 4000);
-                    })
-                    .finally(() => setProduct({}));
+                addProduct.mutate({product, url}, {onSuccess : () => {
+                    setSuccess('제품이 등록되었습니다.');
+                    setTimeout(() => {
+                        setSuccess();
+                    }, 4000);
+                },
+            },
+            );
             })
             .finally(() => setIsUploading(false));
         <Navigate to={'/'} replace />;
