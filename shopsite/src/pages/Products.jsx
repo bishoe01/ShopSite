@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import ProductsCard from '../components/ProductsCard';
 import useProducts from '../hooks/useProducts';
 function Products(props) {

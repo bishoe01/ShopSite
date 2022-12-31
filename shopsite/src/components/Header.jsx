@@ -5,7 +5,6 @@ import {AiOutlineShopping} from 'react-icons/ai';
 import {HiOutlinePencilAlt} from 'react-icons/hi';
 import User from './User';
 import Button from './ui/Button';
-import {useQuery} from '@tanstack/react-query';
 import { useAuthContext } from './context/AuthContext';
 import CartBadge from './CartBadge';
 function Header(props) {
